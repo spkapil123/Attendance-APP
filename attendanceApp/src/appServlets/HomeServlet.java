@@ -1,8 +1,6 @@
 package appServlets;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +20,6 @@ public class HomeServlet extends HttpServlet {
     
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession httpSession=request.getSession();
 		httpSession.setAttribute("pass", null);
 		httpSession.setAttribute("pass1", null);
@@ -38,7 +35,6 @@ public class HomeServlet extends HttpServlet {
 				httpSession.setAttribute("rollCall", attendenceCall);
 		}
 		if(monthlyView!=null){
-			System.out.println("view:"+monthlyView);
 			if(monthlyView.equals("intable")){
 			
 			httpSession.setAttribute("pass", "ok");
@@ -48,13 +44,10 @@ public class HomeServlet extends HttpServlet {
 		}
 		ServiceProvider serviceProvider=new ServiceProvider();
 		if(tableFormat!=null){
-			System.out.println(tableFormat);
 			String fullRecord=serviceProvider.setMonthlytableView(userName,tableFormat);
-			System.out.println("size of list"+fullRecord.length());
 			httpSession.setAttribute("batchDate", fullRecord);
 		}
 		if(calendarFormat!=null){
-			System.out.println(calendarFormat);
 			String fullRecord=serviceProvider.setMonthlytableView(userName,calendarFormat);
 			httpSession.setAttribute("singleDate", fullRecord);
 		}

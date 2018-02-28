@@ -4,6 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%
+  	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+   	response.setHeader("Pragma", "no-cache");
+   	response.setHeader("Expires","0");
+  	if(session.getAttribute("user")==null){
+		response.sendRedirect("Login.jsp");
+	}
+  %>
 <title>LogOut Page</title>
 </head>
 <body>

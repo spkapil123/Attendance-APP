@@ -5,9 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%
+  	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+   	response.setHeader("Pragma", "no-cache");
+   	response.setHeader("Expires","0");
+  	if(session.getAttribute("user")==null){
+		response.sendRedirect("Login.jsp");
+	}
+  %>
 <title>HR HOME</title>
-<%if(session.getAttribute("user")==null){
-		response.sendRedirect("Login.jsp");}%>
 </head>
 <body>
 <h1 align="center">Welcome <%=session.getAttribute("user") %></h1>
@@ -16,12 +22,14 @@
 <form action="HrHome" method="POST">
 <table border = "1" cellpadding = "6" cellspacing = "2" align="center">
             <tr><td><b>Select an Employee to view Attendance</b></td></tr>
-            <%String fullRecord=(String)session.getAttribute("employees");
-			String[] records=fullRecord.split(",");
-			for(int i=0;i<=records.length-1;i++){
+            <%Object object=session.getAttribute("employees");
+            	if(object!=null){
+            	String fullRecord=(String)object;
+				String[] records=fullRecord.split(",");
+				for(int i=0;i<=records.length-1;i++){
 			%>
             <tr><td><input type = "radio" name = "name" value = <%=records[i]%> ><%=records[i]%></td></tr>
-            <%} %>
+            <%} }%>
             <tr><td><input type="submit" value="Submit" onclick="submit" /></td></tr>
  </table>
  </form>
@@ -33,7 +41,7 @@
  <table border="1" align="center">
  <tr>
 <th>Date(MM/DD/YYYY)</th>
-<th>Attendace</th>
+<th>Attendance</th>
 </tr>
 <%
 String str1=str.toString();

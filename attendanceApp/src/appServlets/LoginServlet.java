@@ -2,7 +2,6 @@ package appServlets;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +26,6 @@ public class LoginServlet extends HttpServlet {
 		String person=request.getParameter("person");
 		ServiceProvider validation=new ServiceProvider();
 		boolean valid=validation.loginValidation(name, password,person);
-		System.out.println(valid+"am i vaid");
 		if(valid){
 			httpSession.setAttribute("user", name);
 			httpSession.setAttribute("person", person);
@@ -37,7 +35,6 @@ public class LoginServlet extends HttpServlet {
 				String employees=validation.getEmployees();
 				httpSession.setAttribute("employees", employees);
 				response.sendRedirect("Hr.jsp");
-				System.out.println("login done");
 			}
 		}else{
 			httpSession.setAttribute("error", "Invalid Credentials!!");

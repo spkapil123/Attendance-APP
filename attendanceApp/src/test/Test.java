@@ -6,18 +6,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Properties;
 
 public class Test {
 
 	public static void main(String[] args) {
 		Properties prop = new Properties();
-		Properties prop1 = new Properties();
+		//Properties prop1 = new Properties();
 		OutputStream output = null;
 		InputStream input = null;
 

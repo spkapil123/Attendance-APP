@@ -1,14 +1,7 @@
 package service;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
@@ -21,15 +14,12 @@ public class ServiceProvider {
 		String path = "loginDetails.properties";
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
 		InputStream input = loader.getResourceAsStream(path);
-		
 			try {
 				prop.load(input);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			String pass=prop.getProperty(name);
-			System.out.println(pass.substring(0,8)+person+pass.substring(8));
 			if(password.equals(pass.substring(0,8)) && person.equals(pass.substring(8))){
 				return true;
 			}else{
@@ -56,7 +46,6 @@ public class ServiceProvider {
 						entireRecord=record;
 					}
 				}
-				//entireRecord=entireRecord.substring(0, entireRecord.length()-1);
 			}else{
 				String[] individualRecords=attendanceRecord.split(",");
 				for (String record : individualRecords) {
@@ -65,10 +54,9 @@ public class ServiceProvider {
 					}
 				}
 				entireRecord=entireRecord.substring(0, entireRecord.length()-1);
-				//input.close();
+				input.close();
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
@@ -92,10 +80,9 @@ public class ServiceProvider {
 				}
 			}
 			employees=employees.substring(0, employees.length()-1);
-			//input.close();
+			input.close();
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return employees;
@@ -113,9 +100,8 @@ public class ServiceProvider {
 			InputStream input = loader.getResourceAsStream(path);
 			prop.load(input);
 			entireRecord=prop.getProperty(name);
-			//input.close();
+			input.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return entireRecord;
