@@ -1,5 +1,10 @@
 # project
 
+Attendance APP
+
+I developed this app from scratch using servlets,JSP and tomcat server in Eclipse IDE(JDK-1.8).
+Login.jsp is the Login page.Below are the credentials to login to APP.
+
 1)Username=Ganesh  password=33343536  persontype=employee
 2)Username=Bob  password=29303132  persontype=employee
 3)Username=Deepak  password=21222324  persontype=employee
